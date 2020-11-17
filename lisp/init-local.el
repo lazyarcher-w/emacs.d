@@ -2,6 +2,9 @@
 ;;; Commentary:
 ;;; Code:
 
+;; theme
+(load-theme 'sanityinc-solarized-light nil)
+
 ;; English translation plug
 (require 'insert-translated-name)
 
