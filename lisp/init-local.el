@@ -5,8 +5,9 @@
 ;; English translation plug
 (require 'insert-translated-name)
 
+
 ;; org-agenda
-(org-agenda-files '("~/org"))
+(setq org-agenda-files '("~/org"))
 
 ;; org-publish
 (require 'ox-publish)
