@@ -7,6 +7,7 @@
 
 ;; English translation plug
 (require 'insert-translated-name)
+(setq insert-translated-name-translate-engine 'youdao)
 
 ;; org
 (setq org-directory "~/org")
@@ -49,6 +50,26 @@
 ;;   (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding)
 ;;   (eaf-bind-key scrool_down "C-p" eaf-pdf-viewer-keybinding)
 ;;   (eaf-bind-key take_photo "p" eaf-camera-keybinding))
+
+
+;; tabnine
+(maybe-require-package 'company-tabnine)
+;; FIXME
+;; (add-hook 'js-mode-hook (lambda ()
+;;                           (add-to-list (make-local-variable 'company-backends) #'company-tabnine)
+;;                           ))
+
+;; (add-to-list 'company-backends #'company-tabnine)
+
+
+;; Trigger completion immediately.
+(setq company-idle-delay 0)
+;; Number the candidates (use M-1, M-2 etc to select completions).
+(setq company-show-numbers t)
+
+
+;;
+(setq js-switch-indent-offset 2)
 
 (provide 'init-local)
 ;;; init-local.el ends here
