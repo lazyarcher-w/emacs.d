@@ -8,6 +8,8 @@
 ;; English translation plug
 (require 'insert-translated-name)
 
+;; Setting up org-capture
+(setq org-default-notes-file (concat org-directory "/notes.org"))
 
 ;; org-agenda
 (setq org-agenda-files '("~/org"))
