@@ -8,11 +8,14 @@
 ;; English translation plug
 (require 'insert-translated-name)
 
-;; Setting up org-capture
-(setq org-default-notes-file (concat org-directory "/notes.org"))
+;; org
+(setq org-directory "~/org")
 
 ;; org-agenda
 (setq org-agenda-files '("~/org"))
+
+;; Setting up org-capture
+(setq org-default-notes-file (concat org-directory "/notes.org"))
 
 ;; org-publish
 (require 'ox-publish)
@@ -37,6 +40,15 @@
 
                                   )
       )
+
+;; eaf
+;; (when *is-a-linux*
+;;   (add-to-list 'load-path "~/code/emacs-application-framework")
+;;   (require 'eaf)
+;;   (setq eaf-find-alternate-file-in-dired t)
+;;   (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding)
+;;   (eaf-bind-key scrool_down "C-p" eaf-pdf-viewer-keybinding)
+;;   (eaf-bind-key take_photo "p" eaf-camera-keybinding))
 
 (provide 'init-local)
 ;;; init-local.el ends here
