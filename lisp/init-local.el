@@ -52,13 +52,15 @@
 ;;   (eaf-bind-key take_photo "p" eaf-camera-keybinding))
 
 
+;; TODO: Consider removing tabnine
 ;; tabnine
-(maybe-require-package 'company-tabnine)
-;; FIXME
-;; (add-hook 'js-mode-hook (lambda ()
-;;                           (add-to-list (make-local-variable 'company-backends) #'company-tabnine)
-;;                           ))
+;; (maybe-require-package 'company-tabnine)
 
+;; FIXME
+;; (add-hook 'js-mode-hook
+;;           (lambda ()
+;;             (with-eval-after-load 'company
+;;               (add-to-list (make-local-variable 'company-backends) #'company-tabnine))))
 ;; (add-to-list 'company-backends #'company-tabnine)
 
 
