@@ -16,7 +16,7 @@
 (setq org-agenda-files '("~/org"))
 
 ;; Setting up org-capture
-(setq org-default-notes-file (concat org-directory "/notes.org"))
+(setq org-default-notes-file (concat org-directory "/inbox.org"))
 
 ;; org-publish
 (require 'ox-publish)
@@ -72,6 +72,10 @@
 
 ;;
 (setq js-switch-indent-offset 2)
+
+
+;; vterm
+(maybe-require-package 'vterm)
 
 (provide 'init-local)
 ;;; init-local.el ends here
