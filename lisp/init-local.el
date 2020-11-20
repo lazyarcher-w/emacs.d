@@ -7,7 +7,7 @@
 
 ;; English translation plug
 (require 'insert-translated-name)
-(setq insert-translated-name-translate-engine 'youdao)
+(setq insert-translated-name-translate-engine 'google)
 
 ;; org
 (setq org-directory "~/org")
