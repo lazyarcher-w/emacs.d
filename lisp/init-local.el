@@ -9,6 +9,8 @@
 (require 'insert-translated-name)
 (setq insert-translated-name-translate-engine 'google)
 
+
+(require 'org)
 ;; org
 (setq org-directory "~/org")
 
