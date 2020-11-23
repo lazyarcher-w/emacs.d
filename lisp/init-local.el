@@ -77,5 +77,15 @@
 ;; vterm
 (maybe-require-package 'vterm)
 
+;; epa-file
+(require 'epa-file)
+(epa-file-enable)
+
+;; Include .org.gpg files in org-agenda
+(unless (string-match-p "\\.gpg" org-agenda-file-regexp)
+  (setq org-agenda-file-regexp
+        (replace-regexp-in-string "\\\\\\.org" "\\\\.org\\\\(\\\\.gpg\\\\)?"
+                                  org-agenda-file-regexp)))
+
 (provide 'init-local)
 ;;; init-local.el ends here
