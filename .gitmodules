@@ -1,0 +1,6 @@
+[submodule "snails"]
+	path = snails
+	url = https://github.com/manateelazycat/snails.git
+[submodule "fuz.el"]
+	path = fuz.el
+	url = https://github.com/rustify-emacs/fuz.el.git

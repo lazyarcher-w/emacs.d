@@ -70,6 +70,7 @@
 (require 'init-recentf)
 (require 'init-smex)
 (require 'init-ivy)
+(require 'init-snails)
 (require 'init-hippie-expand)
 (require 'init-company)
 (require 'init-windows)
