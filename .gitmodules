@@ -4,3 +4,6 @@
 [submodule "fuz.el"]
 	path = fuz.el
 	url = https://github.com/rustify-emacs/fuz.el.git
+[submodule "emacs-application-framework"]
+	path = emacs-application-framework
+	url = https://github.com/manateelazycat/emacs-application-framework.git
