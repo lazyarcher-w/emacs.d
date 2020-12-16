@@ -137,6 +137,7 @@
 (require-package 'lsp-mode)
 (require-package 'lsp-ui)
 ;; (maybe-require-package 'lsp-doctor)
+(setq lsp-auto-guess-root t)
 (setq read-process-output-max (* 1024 1024))
 (setq lsp-keymap-prefix "C-c m")
 
