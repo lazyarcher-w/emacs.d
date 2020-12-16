@@ -130,8 +130,8 @@
 ;; formats the buffer before saving
 ;; (add-hook 'before-save-hook 'tide-format-before-save)
 
-(add-hook 'typescript-mode-hook #'setup-tide-mode)
-(add-hook 'js-mode-hook #'setup-tide-mode)
+;; (add-hook 'typescript-mode-hook #'setup-tide-mode)
+;; (add-hook 'js-mode-hook #'setup-tide-mode)
 ;; configure javascript-tide checker to run after your default javascript checker
 
 

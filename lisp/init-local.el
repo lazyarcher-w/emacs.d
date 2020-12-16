@@ -132,5 +132,20 @@
 ;; imenu
 (global-set-key (kbd "M-s i") #'counsel-imenu)
 
+
+;; try lsp-mode
+(require-package 'lsp-mode)
+(require-package 'lsp-ui)
+;; (maybe-require-package 'lsp-doctor)
+(setq read-process-output-max (* 1024 1024))
+(setq lsp-keymap-prefix "C-c m")
+
+(add-hook 'js-mode-hook #'lsp)
+(add-hook 'typescript-mode-hook #'lsp)
+
+;; icons-font
+(require-package 'all-the-icons)
+;; M-x all-the-icons-install-fonts
+
 (provide 'init-local)
 ;;; init-local.el ends here
