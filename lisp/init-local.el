@@ -19,6 +19,10 @@
 ;; Setting up org-capture
 (setq org-default-notes-file (concat org-directory "/inbox.org.gpg"))
 
+
+(maybe-require-package 'org-bullets)
+(add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
+
 ;; eaf
 ;; (when *is-a-linux*
 ;;   (add-to-list 'load-path "~/code/emacs-application-framework")
