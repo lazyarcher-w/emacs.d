@@ -70,7 +70,6 @@
 (require 'init-recentf)
 (require 'init-smex)
 (require 'init-ivy)
-(require 'init-snails)
 (require 'init-hippie-expand)
 (require 'init-company)
 (require 'init-windows)
@@ -86,6 +85,8 @@
 (require 'init-github)
 
 (require 'init-projectile)
+
+(require 'init-lsp)
 
 (require 'init-compile)
 (require 'init-crontab)
@@ -160,7 +161,8 @@
 (require 'init-direnv)
 
 (when *is-a-linux*
-  (require 'init-eaf))
+  (require 'init-eaf)
+  (require 'init-snails))
 
 ;;----------------------------------------------------------------------------
 ;; Allow access from emacsclient

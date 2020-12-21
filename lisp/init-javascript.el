@@ -17,7 +17,7 @@
   (sanityinc/major-mode-lighter 'js-jsx-mode "JSX"))
 
 (setq-default js-indent-level 2)
-
+(setq js-switch-indent-offset 2)
 
 
 ;; js2-mode
@@ -110,30 +110,8 @@
     (add-hook (derived-mode-hook-name mode) 'add-node-modules-path)))
 
 
-;; tide
-(maybe-require-package 'tide)
-(defun setup-tide-mode ()
-  (interactive)
-  (tide-setup)
-  (flycheck-mode +1)
-  (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  (eldoc-mode +1)
-  (tide-hl-identifier-mode +1)
-  ;; company is an optional dependency. You have to
-  ;; install it separately via package-install
-  ;; `M-x package-install [ret] company`
-  (company-mode +1))
-
-;; aligns annotation to the right hand side
-(setq company-tooltip-align-annotations t)
-
-;; formats the buffer before saving
-;; (add-hook 'before-save-hook 'tide-format-before-save)
-
-;; (add-hook 'typescript-mode-hook #'setup-tide-mode)
-;; (add-hook 'js-mode-hook #'setup-tide-mode)
-;; configure javascript-tide checker to run after your default javascript checker
-
+(add-hook 'js-mode-hook #'lsp)
+(add-hook 'typescript-mode-hook #'lsp)
 
 (provide 'init-javascript)
 ;;; init-javascript.el ends here

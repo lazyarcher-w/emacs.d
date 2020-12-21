@@ -23,36 +23,7 @@
 (maybe-require-package 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
-;; eaf
-;; (when *is-a-linux*
-;;   (add-to-list 'load-path "~/code/emacs-application-framework")
-;;   (require 'eaf)
-;;   (setq eaf-find-alternate-file-in-dired t)
-;;   (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding)
-;;   (eaf-bind-key scrool_down "C-p" eaf-pdf-viewer-keybinding)
-;;   (eaf-bind-key take_photo "p" eaf-camera-keybinding))
 
-
-;; TODO: Consider removing tabnine
-;; tabnine
-;; (maybe-require-package 'company-tabnine)
-
-;; FIXME
-;; (add-hook 'js-mode-hook
-;;           (lambda ()
-;;             (with-eval-after-load 'company
-;;               (add-to-list (make-local-variable 'company-backends) #'company-tabnine))))
-;; (add-to-list 'company-backends #'company-tabnine)
-
-
-;; Trigger completion immediately.
-(setq company-idle-delay 0)
-;; Number the candidates (use M-1, M-2 etc to select completions).
-(setq company-show-numbers t)
-
-
-;;
-(setq js-switch-indent-offset 2)
 
 
 ;; vterm
@@ -131,18 +102,6 @@
 
 ;; imenu
 (global-set-key (kbd "M-s i") #'counsel-imenu)
-
-
-;; try lsp-mode
-(require-package 'lsp-mode)
-(require-package 'lsp-ui)
-;; (maybe-require-package 'lsp-doctor)
-(setq lsp-auto-guess-root t)
-(setq read-process-output-max (* 1024 1024))
-(setq lsp-keymap-prefix "C-c m")
-
-(add-hook 'js-mode-hook #'lsp)
-(add-hook 'typescript-mode-hook #'lsp)
 
 ;; icons-font
 (require-package 'all-the-icons)
