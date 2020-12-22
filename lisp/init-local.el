@@ -19,7 +19,6 @@
 ;; Setting up org-capture
 (setq org-default-notes-file (concat org-directory "/inbox.org.gpg"))
 
-
 (maybe-require-package 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
@@ -106,6 +105,6 @@
 ;; icons-font
 (require-package 'all-the-icons)
 ;; M-x all-the-icons-install-fonts
-
+(setq flycheck-checker-error-threshold 1000)
 (provide 'init-local)
 ;;; init-local.el ends here

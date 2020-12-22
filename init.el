@@ -160,9 +160,9 @@
 
 (require 'init-direnv)
 
-(when *is-a-linux*
-  (require 'init-eaf)
-  (require 'init-snails))
+;; (when *is-a-linux*
+;;   (require 'init-eaf)
+;;   (require 'init-snails))
 
 ;;----------------------------------------------------------------------------
 ;; Allow access from emacsclient
