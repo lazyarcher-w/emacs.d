@@ -3,7 +3,9 @@
 ;;; Code:
 
 ;; theme
-(load-theme 'sanityinc-solarized-light nil)
+(dark)
+(set-frame-parameter nil 'alpha '(85 . 100))
+
 
 ;; English translation plug
 (require 'insert-translated-name)
