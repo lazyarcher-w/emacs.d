@@ -2,10 +2,6 @@
 ;;; Commentary:
 ;;; Code:
 
-(require-package 'dumb-jump)
-(setq dumb-jump-selector 'ivy)
-(add-hook 'xref-backend-functions #'dumb-jump-xref-activate)
-
 ;; English translation plug
 (require 'insert-translated-name)
 (setq insert-translated-name-translate-engine 'google)
