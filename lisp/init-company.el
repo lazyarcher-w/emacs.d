@@ -24,9 +24,9 @@
     (define-key company-active-map (kbd "M-.") 'company-show-location)
     (setq-default company-dabbrev-other-buffers 'all
                   company-tooltip-align-annotations t
-                  company-idle-delay 0.2
-                  company-minimum-prefix-length 0
-                  company-tooltip-idle-delay 0.2
+                  company-idle-delay 0
+                  company-minimum-prefix-length 1
+                  company-tooltip-idle-delay 0
                   ))
   (global-set-key (kbd "M-C-/") 'company-complete)
   (when (maybe-require-package 'company-quickhelp)

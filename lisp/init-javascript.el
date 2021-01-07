@@ -109,45 +109,33 @@
   (dolist (mode '(typescript-mode js-mode js2-mode coffee-mode))
     (add-hook (derived-mode-hook-name mode) 'add-node-modules-path)))
 
-(add-hook 'js-mode-hook #'lsp)
-(add-hook 'typescript-mode-hook #'lsp)
+;; (add-hook 'js-mode-hook #'lsp)
+;; (add-hook 'typescript-mode-hook #'lsp)
 
 ;; lsp imenu patch
 (require-package 'tide)
-(add-hook 'js-mode-hook (lambda ()
-                          (require 'tide)
-                          (defun tide-setup-imenu ()
-                            "Setup `tide-imenu' in current buffer."
-                            (when (version< emacs-version tide--minimal-emacs)
-                              (display-warning 'tide (format "Tide requires Emacs >= %s, you are using %s."
-                                                             tide--minimal-emacs emacs-version)
-                                               :error))
-                            ;; Indirect buffers embedded in other major modes such as those in org-mode or
-                            ;; template languages have to be manually synchronized to tsserver. This might
-                            ;; cause problems in files with lots of small blocks of TypeScript. In that
-                            ;; case we should either add an ignore list or don't do anything at all when
-                            ;; there are more than a certain amount of snippets.
-                            (unless (stringp buffer-file-name)
-                              (setq tide-require-manual-setup t))
 
-                            (set (make-local-variable 'imenu-auto-rescan) t)
-                            (set (make-local-variable 'imenu-create-index-function)
-                                 'tide-imenu-index)
-                            (if (tide-current-server)
-                                ;;
-                                ;; We want to issue tide-configure-buffer here if the server exists.  We
-                                ;; cannot rely on hack-local-variable-hook in tide-mode because the hook
-                                ;; may not run at all, or run too late.
-                                ;;
-                                ;; It may happen for some use-case scenarios that tide-configure-buffer
-                                ;; runs more than once with the same data for the same buffer, but that's
-                                ;; not a big deal.
-                                ;;
-                                (tide-configure-buffer)
-                              (when (eq tide-tsserver-start-method 'immediate)
-                                (tide-start-server))))
-                          (tide-setup-imenu)
-                          ))
+(defun setup-tide-mode ()
+  (interactive)
+  (tide-setup)
+  (flycheck-mode +1)
+  (setq flycheck-check-syntax-automatically '(save mode-enabled))
+  (setq tide-format-options '(:insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets t :insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces nil))
+  (eldoc-mode +1)
+  (tide-hl-identifier-mode +1)
+  ;; company is an optional dependency. You have to
+  ;; install it separately via package-install
+  ;; `M-x package-install [ret] company`
+  (company-mode +1))
+
+;; aligns annotation to the right hand side
+(setq company-tooltip-align-annotations t)
+
+
+;; formats the buffer before saving
+(add-hook 'before-save-hook 'tide-format-before-save)
+(add-hook 'typescript-mode-hook #'setup-tide-mode)
+(add-hook 'js-mode-hook #'setup-tide-mode)
 
 (provide 'init-javascript)
 ;;; init-javascript.el ends here
