@@ -103,5 +103,15 @@
 (require-package 'all-the-icons)
 ;; M-x all-the-icons-install-fonts
 (setq flycheck-checker-error-threshold 1000)
+
+;; yasnippet
+(require-package 'yasnippet)
+(require-package 'yasnippet-snippets)
+
+(require 'yasnippet)
+(require 'yasnippet-snippets)
+(yas-reload-all)
+(add-hook 'prog-mode-hook #'yas-minor-mode)
+
 (provide 'init-local)
 ;;; init-local.el ends here
