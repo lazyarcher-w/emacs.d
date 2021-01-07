@@ -23,7 +23,11 @@
     (define-key company-active-map (kbd "C-d") 'company-show-doc-buffer)
     (define-key company-active-map (kbd "M-.") 'company-show-location)
     (setq-default company-dabbrev-other-buffers 'all
-                  company-tooltip-align-annotations t))
+                  company-tooltip-align-annotations t
+                  company-idle-delay 0.2
+                  company-minimum-prefix-length 0
+                  company-tooltip-idle-delay 0.2
+                  ))
   (global-set-key (kbd "M-C-/") 'company-complete)
   (when (maybe-require-package 'company-quickhelp)
     (add-hook 'after-init-hook 'company-quickhelp-mode)))
