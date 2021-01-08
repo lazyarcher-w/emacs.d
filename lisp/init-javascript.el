@@ -119,18 +119,19 @@
   (interactive)
   (require 'projectile)
   (projectile-with-default-dir (projectile-acquire-root)
-    (call-process-shell-command (concat "node_modules/eslint/bin/eslint.js --fix " (buffer-file-name)))
+    (call-process-shell-command (concat "npm run eslint -- --fix " (buffer-file-name)))
     (revert-buffer 1 1)
     ))
 
 (defun setup-tide-mode ()
   (interactive)
   (tide-setup)
+  (define-key tide-mode-map (kbd "C-h d") #'tide-documentation-at-point)
+  (define-key tide-mode-map (kbd "C-.") #'tide-references)
   (flycheck-mode +1)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   ;; configure javascript-tide checker to run after your default javascript checker
   (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append)
-  (setq tide-format-options '(:insertSpaceAfterOpeningAndBeforeClosingNonemptyBrackets t :insertSpaceAfterOpeningAndBeforeClosingTemplateStringBraces nil))
   (eldoc-mode +1)
   (tide-hl-identifier-mode +1)
   ;; company is an optional dependency. You have to
@@ -138,8 +139,6 @@
   ;; `M-x package-install [ret] company`
   (company-mode +1))
 
-;; aligns annotation to the right hand side
-(setq company-tooltip-align-annotations t)
 
 
 ;; formats the buffer before saving
