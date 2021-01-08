@@ -115,6 +115,14 @@
 ;; lsp imenu patch
 (require-package 'tide)
 
+(defun eslint-fix-file ()
+  (interactive)
+  (require 'projectile)
+  (projectile-with-default-dir (projectile-acquire-root)
+    (call-process-shell-command (concat "node_modules/eslint/bin/eslint.js --fix " (buffer-file-name)))
+    (revert-buffer 1 1)
+    ))
+
 (defun setup-tide-mode ()
   (interactive)
   (tide-setup)
