@@ -16,7 +16,7 @@
 (setq lsp-ui-sideline-show-hover nil)
 (setq lsp-modeline-code-actions-enable nil)
 (setq lsp-ui-sideline-show-diagnostics nil)
-(setq lsp-enable-imenu nil)
+(setq lsp-enable-imenu t)
 (setq lsp-auto-guess-root t)
 (setq read-process-output-max (* 1024 1024))
 
