@@ -114,6 +114,7 @@
 
 ;; lsp imenu patch
 (require-package 'tide)
+(require-package 'dumb-jump)
 
 (defun eslint-fix-file ()
   (interactive)
@@ -127,13 +128,16 @@
   (interactive)
   (tide-setup)
   (define-key tide-mode-map (kbd "C-h d") #'tide-documentation-at-point)
-  (define-key tide-mode-map (kbd "C-.") #'tide-references)
+  (define-key tide-mode-map (kbd "C-.") #'tide-jump-to-implementation)
+  (define-key tide-mode-map (kbd "C-,") #'tide-references)
   (flycheck-mode +1)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   ;; configure javascript-tide checker to run after your default javascript checker
   (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append)
   (eldoc-mode +1)
   (tide-hl-identifier-mode +1)
+  (setq dumb-jump-selector 'ivy)
+  (setq tide-jump-to-fallback  #'dumb-jump-go)
   ;; company is an optional dependency. You have to
   ;; install it separately via package-install
   ;; `M-x package-install [ret] company`
