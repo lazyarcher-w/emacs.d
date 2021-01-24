@@ -56,3 +56,5 @@ site-lisp/package/
 /eln-cache/
 /eaf
 projects
+.extension/
+.dap-breakpoints
