@@ -25,11 +25,12 @@
   (require 'dap-cpptools)
   (dap-cpptools-setup)
   (dap-register-debug-template
-   "cpptools::(lldb) Launch current file"
+   "cpptools::(gdb/lldb) Launch current file"
    (list :type "cppdbg"
          :request "launch"
          :name "cpptools::Run Configuration"
-         :MIMode "lldb"
+         :linux (list :MIMode "gdb")
+         :osx (list :MIMode "lldb")
          :program "${fileDirname}/${fileBasenameNoExtension}"
          :cwd "${workspaceFolder}"))
   (defun archer/dap-debug-before-cc-compile-current-file ()
@@ -43,7 +44,8 @@
     (dap-debug (list :type "cppdbg"
                      :request "launch"
                      :name "cpptools::Run Configuration"
-                     :MIMode "lldb"
+                     :linux (list :MIMode "gdb")
+                     :osx (list :MIMode "lldb")
                      :program "${fileDirname}/${fileBasenameNoExtension}"
                      :cwd "${workspaceFolder}"))))
 
