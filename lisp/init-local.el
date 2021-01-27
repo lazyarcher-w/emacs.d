@@ -96,9 +96,6 @@
 
 ;; ================================================
 
-;; imenu
-(global-set-key (kbd "M-s i") #'counsel-imenu)
-
 ;; icons-font
 (require-package 'all-the-icons)
 ;; M-x all-the-icons-install-fonts
@@ -115,6 +112,8 @@
 
 ;; The Consult package provides the command consult-line which behaves similarly to Swiper.
 (global-set-key (kbd "M-s /") #'consult-line)
+;; imenu
+(global-set-key (kbd "M-s i") #'consult-imenu)
 
 (provide 'init-local)
 ;;; init-local.el ends here
