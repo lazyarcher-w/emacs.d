@@ -51,7 +51,6 @@
 
 (with-eval-after-load 'lsp-mode
   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
-  (yas-global-mode)
   (archer/dap-cpptools-setup))
 
 (provide 'init-lsp)

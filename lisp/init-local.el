@@ -113,5 +113,8 @@
 (yas-reload-all)
 (add-hook 'prog-mode-hook #'yas-minor-mode)
 
+;; The Consult package provides the command consult-line which behaves similarly to Swiper.
+(global-set-key (kbd "M-s /") #'consult-line)
+
 (provide 'init-local)
 ;;; init-local.el ends here
