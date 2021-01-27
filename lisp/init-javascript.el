@@ -130,6 +130,7 @@
   (define-key tide-mode-map (kbd "C-h d") #'tide-documentation-at-point)
   (define-key tide-mode-map (kbd "C-.") #'tide-jump-to-implementation)
   (define-key tide-mode-map (kbd "C-,") #'tide-references)
+  (define-key tide-mode-map (kbd "C-x M-F") #'eslint-fix-file)
   (flycheck-mode +1)
   (setq flycheck-check-syntax-automatically '(save mode-enabled))
   ;; configure javascript-tide checker to run after your default javascript checker
@@ -146,7 +147,7 @@
 
 
 ;; formats the buffer before saving
-(add-hook 'before-save-hook 'tide-format-before-save)
+;; (add-hook 'before-save-hook 'tide-format-before-save)
 (add-hook 'typescript-mode-hook #'setup-tide-mode)
 (add-hook 'js-mode-hook #'setup-tide-mode)
 
