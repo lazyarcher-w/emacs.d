@@ -11,7 +11,7 @@
 
 ;; If you don't customize it, this is the theme you get.
 (setq-default custom-enabled-themes '(sanityinc-tomorrow-bright))
-(set-frame-parameter nil 'alpha 65)
+(set-frame-parameter nil 'alpha 85)
 
 ;; Ensure that themes will be applied even if they have not been customized
 (defun reapply-themes ()
