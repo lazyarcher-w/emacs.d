@@ -14,7 +14,7 @@
 (setq org-agenda-files '("~/org"))
 
 ;; Setting up org-capture
-(setq org-default-notes-file (concat org-directory "/inbox.org.gpg"))
+(setq org-default-notes-file (concat org-directory "/notes.org"))
 
 (maybe-require-package 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
