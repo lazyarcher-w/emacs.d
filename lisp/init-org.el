@@ -111,11 +111,11 @@ typical word processor."
 (global-set-key (kbd "C-c c") 'org-capture)
 
 (setq org-capture-templates
-      `(("t" "todo" entry (file "~/org/inbox.org.gpg")  ; "" => `org-default-notes-file'
+      `(("t" "todo" entry (file "~/books/notes/Beyonds/inbox.org")  ; "" => `org-default-notes-file'
          "* NEXT %?\n%U\n" :clock-resume t)
         ("n" "note" entry (file "")
          "* %? :NOTE:\n%U\n%a\n" :clock-resume t)
-        ("j" "Journal" entry (file+datetree "~/org/journal.org.gpg")
+        ("j" "Journal" entry (file+datetree "~/books/notes/Beyonds/journal.org")
          "* %?\nEntered on %U\n  %i\n  %a")
         ))
 
@@ -131,7 +131,7 @@ typical word processor."
 (with-eval-after-load 'org-agenda
   (add-to-list 'org-agenda-after-show-hook 'org-show-entry))
 
-(advice-add 'org-refile :after (lambda (&rest _) (org-save-all-org-buffers)))
+(advice-add 'org-refile :after (lnambda (&rest _) (org-save-all-org-buffers)))
 
 ;; Exclude DONE state tasks from refile targets
 (defun sanityinc/verify-refile-target ()
