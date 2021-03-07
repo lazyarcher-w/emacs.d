@@ -131,7 +131,7 @@ typical word processor."
 (with-eval-after-load 'org-agenda
   (add-to-list 'org-agenda-after-show-hook 'org-show-entry))
 
-(advice-add 'org-refile :after (lnambda (&rest _) (org-save-all-org-buffers)))
+(advice-add 'org-refile :after (lambda (&rest _) (org-save-all-org-buffers)))
 
 ;; Exclude DONE state tasks from refile targets
 (defun sanityinc/verify-refile-target ()
