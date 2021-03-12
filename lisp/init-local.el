@@ -11,9 +11,9 @@
 (setq org-directory "~/books")
 
 ;; org-agenda
-(setq org-agenda-files '("~/books" "~/org"))
+(setq org-agenda-files '("~/books"))
 
-(setq org-default-notes-file (concat org-directory "/inbox.org"))
+(setq org-default-notes-file (concat org-directory "/inbox.org.gpg"))
 
 (maybe-require-package 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))

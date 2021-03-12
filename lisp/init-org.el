@@ -111,11 +111,11 @@ typical word processor."
 (global-set-key (kbd "C-c c") 'org-capture)
 
 (setq org-capture-templates
-      `(("t" "todo" entry (file "~/books/notes/Beyonds/inbox.org")  ; "" => `org-default-notes-file'
+      `(("t" "todo" entry (file "")  ; "" => `org-default-notes-file'
          "* NEXT %?\n%U\n" :clock-resume t)
         ("n" "note" entry (file "")
          "* %? :NOTE:\n%U\n%a\n" :clock-resume t)
-        ("j" "Journal" entry (file+datetree "~/books/notes/Beyonds/journal.org")
+        ("j" "Journal" entry (file+datetree "~/books/journal.org.gpg")
          "* %?\nEntered on %U\n  %i\n  %a")
         ))
 
