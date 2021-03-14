@@ -18,6 +18,13 @@
 (maybe-require-package 'org-bullets)
 (add-hook 'org-mode-hook (lambda () (org-bullets-mode 1)))
 
+;; org-download
+(require-package 'org-download)
+(require 'org-download)
+
+;; Drag-and-drop to `dired`
+(add-hook 'dired-mode-hook 'org-download-enable)
+
 ;; vterm
 (maybe-require-package 'vterm)
 
