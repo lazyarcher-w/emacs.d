@@ -57,5 +57,8 @@
 ;; imenu
 (global-set-key (kbd "M-s i") #'consult-imenu)
 
+(with-eval-after-load 'org
+  (define-key org-mode-map (kbd "M-s i") 'consult-outline))
+
 (provide 'init-local)
 ;;; init-local.el ends here
