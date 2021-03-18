@@ -2,6 +2,13 @@
 ;;; Commentary:
 ;;; Code:
 
+(require-package 'doom-modeline)
+;; Or use this
+;; Use `window-setup-hook' if the right segment is displayed incorrectly
+(add-hook 'after-init-hook #'doom-modeline-mode)
+;; icons-font
+(require-package 'all-the-icons)
+
 ;; English translation plug
 (require 'insert-translated-name)
 (setq insert-translated-name-translate-engine 'google)
@@ -38,8 +45,7 @@
         (replace-regexp-in-string "\\\\\\.org" "\\\\.org\\\\(\\\\.gpg\\\\)?"
                                   org-agenda-file-regexp)))
 
-;; icons-font
-(require-package 'all-the-icons)
+
 ;; M-x all-the-icons-install-fonts
 (setq flycheck-checker-error-threshold 1000)
 
