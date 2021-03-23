@@ -53,5 +53,7 @@
   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
   (archer/dap-cpptools-setup))
 
+(advice-add 'lsp :before (lambda (&rest _args) (eval '(setf (lsp-session-server-id->folders (lsp-session)) (ht)))))
+
 (provide 'init-lsp)
 ;;; init-lsp.el ends here
