@@ -118,6 +118,7 @@
 (require 'init-docker)
 (require 'init-terraform)
 (require 'init-nix)
+(require 'init-java)
 (maybe-require-package 'nginx-mode)
 
 (require 'init-paredit)

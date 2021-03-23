@@ -58,3 +58,6 @@ site-lisp/package/
 projects
 .extension/
 .dap-breakpoints
+eclipse.jdt.ls/
+request/
+workspace/
