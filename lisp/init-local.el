@@ -32,6 +32,11 @@
 ;; Drag-and-drop to `dired`
 (add-hook 'dired-mode-hook 'org-download-enable)
 
+(org-babel-do-load-languages
+ 'org-babel-load-languages
+ '((emacs-lisp . nil)
+   (C .t)))
+
 ;; vterm
 (maybe-require-package 'vterm)
 
