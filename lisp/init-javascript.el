@@ -120,9 +120,8 @@
   (interactive)
   (require 'projectile)
   (projectile-with-default-dir (projectile-acquire-root)
-    (call-process-shell-command (concat "npm run eslint -- --fix " (buffer-file-name)))
-    (revert-buffer 1 1)
-    ))
+    (save-excursion
+      (call-process-shell-command (concat "npm run eslint -- --fix " (buffer-file-name))))))
 
 (defun setup-tide-mode ()
   (interactive)
