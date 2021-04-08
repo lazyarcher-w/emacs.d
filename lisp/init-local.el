@@ -37,6 +37,9 @@
  '((emacs-lisp . nil)
    (C .t)))
 
+(require-package 'valign)
+(add-hook 'org-mode-hook #'valign-mode)
+
 ;; vterm
 (maybe-require-package 'vterm)
 
