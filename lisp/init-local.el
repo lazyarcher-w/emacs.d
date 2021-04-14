@@ -2,16 +2,16 @@
 ;;; Commentary:
 ;;; Code:
 
-(require-package 'doom-modeline)
-;; Or use this
-;; Use `window-setup-hook' if the right segment is displayed incorrectly
-(add-hook 'after-init-hook #'doom-modeline-mode)
+;; (require-package 'doom-modeline)
+;; ;; Or use this
+;; ;; Use `window-setup-hook' if the right segment is displayed incorrectly
+;; (add-hook 'after-init-hook #'doom-modeline-mode)
 ;; icons-font
-(require-package 'all-the-icons)
+;; (require-package 'all-the-icons)
 
 ;; English translation plug
-(require 'insert-translated-name)
-(setq insert-translated-name-translate-engine 'google)
+;; (require 'insert-translated-name)
+;; (setq insert-translated-name-translate-engine 'google)
 
 (require 'org)
 ;; org
@@ -37,11 +37,11 @@
  '((emacs-lisp . nil)
    (C .t)))
 
-(require-package 'valign)
-(add-hook 'org-mode-hook #'valign-mode)
+;; (require-package 'valign)
+;; (add-hook 'org-mode-hook #'valign-mode)
 
 ;; vterm
-(maybe-require-package 'vterm)
+;; (maybe-require-package 'vterm)
 
 ;; epa-file
 (require 'epa-file)
@@ -54,17 +54,16 @@
                                   org-agenda-file-regexp)))
 
 
-;; M-x all-the-icons-install-fonts
 (setq flycheck-checker-error-threshold 1000)
 
 ;; yasnippet
-(require-package 'yasnippet)
-(require-package 'yasnippet-snippets)
+;; (require-package 'yasnippet)
+;; (require-package 'yasnippet-snippets)
 
-(require 'yasnippet)
-(require 'yasnippet-snippets)
-(yas-reload-all)
-(add-hook 'prog-mode-hook #'yas-minor-mode)
+;; (require 'yasnippet)
+;; (require 'yasnippet-snippets)
+;; (yas-reload-all)
+;; (add-hook 'prog-mode-hook #'yas-minor-mode)
 
 ;; The Consult package provides the command consult-line which behaves similarly to Swiper.
 (global-set-key (kbd "M-s /") #'consult-line)

@@ -294,9 +294,9 @@ typical word processor."
 (defun sanityinc/hide-org-clock-from-header-line ()
   (setq-default header-line-format nil))
 
-(add-hook 'org-clock-in-hook 'sanityinc/show-org-clock-in-header-line)
-(add-hook 'org-clock-out-hook 'sanityinc/hide-org-clock-from-header-line)
-(add-hook 'org-clock-cancel-hook 'sanityinc/hide-org-clock-from-header-line)
+;; (add-hook 'org-clock-in-hook 'sanityinc/show-org-clock-in-header-line)
+;; (add-hook 'org-clock-out-hook 'sanityinc/hide-org-clock-from-header-line)
+;; (add-hook 'org-clock-cancel-hook 'sanityinc/hide-org-clock-from-header-line)
 
 (with-eval-after-load 'org-clock
   (define-key org-clock-mode-line-map [header-line mouse-2] 'org-clock-goto)
