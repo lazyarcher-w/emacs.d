@@ -2,12 +2,12 @@
 ;;; Commentary:
 ;;; Code:
 
-;; (require-package 'doom-modeline)
-;; ;; Or use this
-;; ;; Use `window-setup-hook' if the right segment is displayed incorrectly
-;; (add-hook 'after-init-hook #'doom-modeline-mode)
+(require-package 'doom-modeline)
+;; Or use this
+;; Use `window-setup-hook' if the right segment is displayed incorrectly
+(add-hook 'after-init-hook #'doom-modeline-mode)
 ;; icons-font
-;; (require-package 'all-the-icons)
+(require-package 'all-the-icons)
 
 ;; English translation plug
 ;; (require 'insert-translated-name)
@@ -41,7 +41,7 @@
 ;; (add-hook 'org-mode-hook #'valign-mode)
 
 ;; vterm
-;; (maybe-require-package 'vterm)
+(maybe-require-package 'vterm)
 
 ;; epa-file
 (require 'epa-file)
