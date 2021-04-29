@@ -2,12 +2,12 @@
 ;;; Commentary:
 ;;; Code:
 
-(require-package 'doom-modeline)
-;; Or use this
-;; Use `window-setup-hook' if the right segment is displayed incorrectly
-(add-hook 'after-init-hook #'doom-modeline-mode)
-;; icons-font
-(require-package 'all-the-icons)
+;; (require-package 'doom-modeline)
+;; ;; Or use this
+;; ;; Use `window-setup-hook' if the right segment is displayed incorrectly
+;; (add-hook 'after-init-hook #'doom-modeline-mode)
+;; ;; icons-font
+;; (require-package 'all-the-icons)
 
 ;; English translation plug
 ;; (require 'insert-translated-name)
@@ -35,6 +35,7 @@
 (org-babel-do-load-languages
  'org-babel-load-languages
  '((emacs-lisp . nil)
+   (scheme . t)
    (C .t)))
 
 ;; (require-package 'valign)
@@ -72,6 +73,12 @@
 
 (with-eval-after-load 'org
   (define-key org-mode-map (kbd "M-s i") 'consult-outline))
+
+(require-package 'web-mode)
+(add-auto-mode 'web-mode "\\.\\(vue\\|wxml\\)\\'")
+(add-hook 'web-mode-hook 'lsp)
+
+(require-package 'yasnippet)
 
 (provide 'init-local)
 ;;; init-local.el ends here

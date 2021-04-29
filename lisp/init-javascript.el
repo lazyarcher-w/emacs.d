@@ -107,46 +107,8 @@
   (dolist (mode '(typescript-mode js-mode js2-mode coffee-mode))
     (add-hook (derived-mode-hook-name mode) 'add-node-modules-path)))
 
-;; (add-hook 'js-mode-hook #'lsp)
-;; (add-hook 'typescript-mode-hook #'lsp)
-
-;; lsp imenu patch
-(require-package 'tide)
-(require-package 'dumb-jump)
-
-(defun eslint-fix-file ()
-  (interactive)
-  (require 'projectile)
-  (projectile-with-default-dir (projectile-acquire-root)
-    (save-excursion
-      (call-process-shell-command (concat "npm run eslint -- --fix " (buffer-file-name))))))
-
-(defun setup-tide-mode ()
-  (interactive)
-  (tide-setup)
-  (define-key tide-mode-map (kbd "C-h d") #'tide-documentation-at-point)
-  (define-key tide-mode-map (kbd "C-.") #'tide-jump-to-implementation)
-  (define-key tide-mode-map (kbd "C-,") #'tide-references)
-  (define-key tide-mode-map (kbd "C-c C-f") #'eslint-fix-file)
-  (flycheck-mode +1)
-  (setq flycheck-check-syntax-automatically '(save mode-enabled))
-  ;; configure javascript-tide checker to run after your default javascript checker
-  (flycheck-add-next-checker 'javascript-eslint 'javascript-tide 'append)
-  (eldoc-mode +1)
-  (tide-hl-identifier-mode +1)
-  (setq dumb-jump-selector 'ivy)
-  (setq tide-jump-to-fallback  #'dumb-jump-go)
-  ;; company is an optional dependency. You have to
-  ;; install it separately via package-install
-  ;; `M-x package-install [ret] company`
-  (company-mode +1))
-
-
-
-;; formats the buffer before saving
-;; (add-hook 'before-save-hook 'tide-format-before-save)
-(add-hook 'typescript-mode-hook #'setup-tide-mode)
-(add-hook 'js-mode-hook #'setup-tide-mode)
+(add-hook 'typescript-mode-hook #'lsp)
+(add-hook 'js-mode-hook #'lsp)
 
 (provide 'init-javascript)
 ;;; init-javascript.el ends here
