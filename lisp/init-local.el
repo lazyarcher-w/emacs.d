@@ -58,13 +58,13 @@
 (setq flycheck-checker-error-threshold 1000)
 
 ;; yasnippet
-;; (require-package 'yasnippet)
-;; (require-package 'yasnippet-snippets)
+(require-package 'yasnippet)
+(require-package 'yasnippet-snippets)
 
-;; (require 'yasnippet)
-;; (require 'yasnippet-snippets)
-;; (yas-reload-all)
-;; (add-hook 'prog-mode-hook #'yas-minor-mode)
+(require 'yasnippet)
+(require 'yasnippet-snippets)
+(yas-reload-all)
+(add-hook 'prog-mode-hook #'yas-minor-mode)
 
 ;; The Consult package provides the command consult-line which behaves similarly to Swiper.
 (global-set-key (kbd "M-s /") #'consult-line)
@@ -77,8 +77,6 @@
 (require-package 'web-mode)
 (add-auto-mode 'web-mode "\\.\\(vue\\|wxml\\)\\'")
 (add-hook 'web-mode-hook 'lsp)
-
-(require-package 'yasnippet)
 
 (provide 'init-local)
 ;;; init-local.el ends here

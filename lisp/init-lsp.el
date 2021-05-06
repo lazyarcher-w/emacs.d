@@ -6,16 +6,22 @@
 (require-package 'dap-mode)
 (setq lsp-keymap-prefix "C-c m")
 
-(setq lsp-enable-symbol-highlighting t)
+(setq lsp-enable-symbol-highlighting nil)
+(setq lsp-lens-enable nil)
 (setq lsp-ui-doc-enable nil)
 (setq lsp-ui-doc-show-with-cursor nil)
 (setq lsp-ui-doc-show-with-mouse nil)
+(setq lsp-signature-auto-activate t) ;; you could manually requiest them via `lsp-signature-activate`
+(setq lsp-signature-render-documentation t)
+(setq lsp-eldoc-enable-hover nil)
 (setq lsp-headerline-breadcrumb-enable nil)
 (setq lsp-ui-sideline-enable nil)
 (setq lsp-ui-sideline-show-code-actions nil)
 (setq lsp-ui-sideline-show-hover nil)
 (setq lsp-modeline-code-actions-enable nil)
+(setq lsp-diagnostics-provider :none)
 (setq lsp-ui-sideline-show-diagnostics nil)
+(setq lsp-modeline-diagnostics-enable nil)
 (setq lsp-enable-imenu t)
 (setq lsp-auto-guess-root t)
 (setq read-process-output-max (* 1024 1024))
@@ -51,6 +57,9 @@
 
 (with-eval-after-load 'lsp-mode
   (add-hook 'lsp-mode-hook #'lsp-enable-which-key-integration)
+  (add-hook 'lsp-mode-hook (lambda ()
+                             (define-key lsp-mode-map (kbd "C-,") 'lsp-find-references)
+                             (define-key lsp-mode-map (kbd "C-.") 'lsp-find-implementation)))
   (archer/dap-cpptools-setup))
 
 (advice-add 'lsp :before (lambda (&rest _args) (eval '(setf (lsp-session-server-id->folders (lsp-session)) (ht)))))
