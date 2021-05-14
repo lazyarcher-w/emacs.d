@@ -78,5 +78,13 @@
 (add-auto-mode 'web-mode "\\.\\(vue\\|wxml\\)\\'")
 (add-hook 'web-mode-hook 'lsp)
 
+(require-package 'geiser)
+(require-package 'geiser-chez)
+
+
+;; graphviz-dot
+(require-package 'graphviz-dot-mode)
+(add-hook 'graphviz-dot-mode-hook #'company-graphviz-dot)
+(add-auto-mode 'graphviz-dot-mode "\\.\\(dot\\)\\'")
 (provide 'init-local)
 ;;; init-local.el ends here
