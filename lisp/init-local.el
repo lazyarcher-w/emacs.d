@@ -47,6 +47,8 @@
 ;; epa-file
 (require 'epa-file)
 (epa-file-enable)
+;; macOS 上的图形界面 Emacs 弹出密码窗口有问题，可以通过以下配置解决
+(setq epa-pinentry-mode 'loopback)
 
 ;; Include .org.gpg files in org-agenda
 (unless (string-match-p "\\.gpg" org-agenda-file-regexp)
