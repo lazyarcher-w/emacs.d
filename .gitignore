@@ -54,3 +54,5 @@ site-lisp/package/
 /.lsp-session-v1
 /smex-items
 /eln-cache/
+/eclipse.jdt.ls/
+/workspace/
