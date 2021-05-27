@@ -67,5 +67,26 @@
   (add-hook 'typescript-mode-hook #'setup-tide-mode)
   (add-hook 'js-mode-hook #'setup-tide-mode))
 
+
+;; java
+(require-package 'lsp-java)
+(require 'lsp-java-boot)
+(setq lsp-java-jdt-download-url "https://mirrors.ustc.edu.cn/eclipse/jdtls/snapshots/jdt-language-server-latest.tar.gz")
+(add-hook 'java-mode-hook (lambda ()
+                            (setq-local lsp-file-watch-threshold 2000)
+                            (lsp)
+                            (lsp-lens-mode)
+                            (lsp-java-boot-lens-mode)
+                            (let ((path-to-lombok (format "%s%s" (getenv "HOME") "/.m2/repository/org/projectlombok/lombok/1.18.12/lombok-1.18.12.jar")))
+                              (setq-local lsp-java-vmargs
+                                          `("-noverify"
+                                            "-Xmx1G"
+                                            "-XX:+UseG1GC"
+                                            "-XX:+UseStringDeduplication"
+                                            ,(concat "-javaagent:" path-to-lombok))))
+                            (define-key lsp-mode-map (kbd "C-.") #'lsp-find-implementation)
+                            (define-key lsp-mode-map (kbd "C-,") #'lsp-find-references)))
+(add-hook 'yaml-mode-hook #'lsp)
+
 (provide 'init-local)
 ;;; init-local.el ends here
