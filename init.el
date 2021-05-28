@@ -63,7 +63,7 @@
 (require 'init-flycheck)
 
 (require 'init-recentf)
-(require 'init-selectrum)
+(require 'init-minibuffer)
 (require 'init-hippie-expand)
 (require 'init-company)
 (require 'init-windows)
@@ -140,8 +140,6 @@
 (require-package 'htmlize)
 (when *is-a-mac*
   (require-package 'osx-location))
-(unless (eq system-type 'windows-nt)
-  (maybe-require-package 'daemons))
 (maybe-require-package 'dotenv-mode)
 (maybe-require-package 'shfmt)
 
