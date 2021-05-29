@@ -68,12 +68,29 @@
   (add-hook 'js-mode-hook #'setup-tide-mode))
 
 
+;; lsp
+(require-package 'lsp-mode)
+
+(with-eval-after-load 'lsp-mode
+  (setq lsp-ui-doc-enable nil)
+  (setq lsp-eldoc-enable-hover nil)
+  (setq lsp-headerline-breadcrumb-enable nil)
+  (setq lsp-ui-sideline-enable nil)
+  (setq lsp-diagnostics-provider :none)
+  (setq lsp-modeline-code-actions-enable nil)
+  (setq lsp-modeline-diagnostics-enable nil)
+  (setq lsp-file-watch-threshold 2000))
+
+(add-hook 'lsp-mode-hook (lambda ()
+                           (define-key lsp-mode-map (kbd "C-.") #'lsp-find-implementation)
+                           (define-key lsp-mode-map (kbd "C-,") #'lsp-find-references)))
+
+
 ;; java
 (require-package 'lsp-java)
 (require 'lsp-java-boot)
 (setq lsp-java-jdt-download-url "https://mirrors.ustc.edu.cn/eclipse/jdtls/snapshots/jdt-language-server-latest.tar.gz")
 (add-hook 'java-mode-hook (lambda ()
-                            (setq-local lsp-file-watch-threshold 2000)
                             (lsp)
                             (lsp-lens-mode)
                             (lsp-java-boot-lens-mode)
@@ -83,10 +100,9 @@
                                             "-Xmx1G"
                                             "-XX:+UseG1GC"
                                             "-XX:+UseStringDeduplication"
-                                            ,(concat "-javaagent:" path-to-lombok))))
-                            (define-key lsp-mode-map (kbd "C-.") #'lsp-find-implementation)
-                            (define-key lsp-mode-map (kbd "C-,") #'lsp-find-references)))
+                                            ,(concat "-javaagent:" path-to-lombok))))))
 (add-hook 'yaml-mode-hook #'lsp)
+
 
 (provide 'init-local)
 ;;; init-local.el ends here
