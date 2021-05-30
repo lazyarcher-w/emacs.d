@@ -73,9 +73,9 @@
 
 (with-eval-after-load 'lsp-mode
   (setq lsp-ui-doc-enable nil)
-  (setq lsp-eldoc-enable-hover nil)
+  (setq lsp-eldoc-enable-hover t)
   (setq lsp-headerline-breadcrumb-enable nil)
-  (setq lsp-ui-sideline-enable nil)
+  (setq lsp-ui-sideline-enable t)
   (setq lsp-diagnostics-provider :none)
   (setq lsp-modeline-code-actions-enable nil)
   (setq lsp-modeline-diagnostics-enable nil)
@@ -103,6 +103,12 @@
                                             ,(concat "-javaagent:" path-to-lombok))))))
 (add-hook 'yaml-mode-hook #'lsp)
 
+
+;; python
+(require-package 'lsp-pyright)
+(add-hook 'python-mode-hook (lambda ()
+                              (require 'lsp-pyright)
+                              (lsp)))
 
 (provide 'init-local)
 ;;; init-local.el ends here
