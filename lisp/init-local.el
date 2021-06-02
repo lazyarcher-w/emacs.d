@@ -31,11 +31,18 @@
                                (append org-babel-load-languages
                                        '((scheme . t))))
 
+
   (setq org-directory "~/org")
+
+  (add-to-list 'org-capture-templates
+               '("d" "diary" entry (file+datetree (lambda () (concat org-directory "/diary.org.gpg")))
+                 "* %?\nEntered on %U\n  %i"))
+
   (setq org-default-notes-file (concat org-directory "/inbox.org.gpg"))
   (setq org-agenda-files (list org-default-notes-file
                                (concat org-directory "/work.org.gpg")
                                (concat org-directory "/home.org.gpg")
+                               (concat org-directory "/friend.org.gpg")
                                (concat org-directory "/note.org")
                                (concat org-directory "/study.org.gpg")
                                (concat org-directory "/health.org.gpg"))))
