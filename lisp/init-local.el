@@ -81,6 +81,17 @@
   (add-hook 'typescript-mode-hook #'setup-tide-mode)
   (add-hook 'js-mode-hook #'setup-tide-mode))
 
+(when (maybe-require-package 'projectile)
+  (defun eslint-fix-current-file ()
+    (interactive)
+    (projectile-with-default-dir (projectile-acquire-root)
+      (save-excursion
+        (let ((command (concat "npx eslint --fix " (buffer-file-name))))
+          (message command)
+          (shell-command command))
+        (revert-buffer t t)))))
+
+
 
 ;; lsp
 (require-package 'lsp-mode)
@@ -123,6 +134,9 @@
 (add-hook 'python-mode-hook (lambda ()
                               (require 'lsp-pyright)
                               (lsp)))
+
+
+(maybe-require-package 'devdocs-browser)
 
 (provide 'init-local)
 ;;; init-local.el ends here
