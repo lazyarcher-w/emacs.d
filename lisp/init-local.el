@@ -59,6 +59,18 @@
 
 ;; lsp support
 (when (maybe-require-package 'tide)
+
+  (defun eslint-fix-current-file ()
+    (interactive)
+    (if (maybe-require-package 'projectile)
+        (projectile-with-default-dir (projectile-acquire-root)
+          (save-excursion
+            (let ((command (concat "npx eslint --fix " (buffer-file-name))))
+              (message command)
+              (shell-command command))
+            (revert-buffer t t)))
+      (message "projectile don't install")))
+
   (defun setup-tide-mode ()
     (tide-setup)
     (flycheck-mode +1)
@@ -72,6 +84,7 @@
     ;; `M-x package-install [ret] company`
     (define-key tide-mode-map (kbd "C-.") #'tide-jump-to-implementation)
     (define-key tide-mode-map (kbd "C-,") #'tide-references)
+    (define-key tide-mode-map (kbd "C-c C-f") #'eslint-fix-current-file)
     (when (maybe-require-package 'dumb-jump)
       (setq dumb-jump-selector 'completing-read)
       (setq tide-jump-to-fallback  #'dumb-jump-go))
@@ -81,15 +94,7 @@
   (add-hook 'typescript-mode-hook #'setup-tide-mode)
   (add-hook 'js-mode-hook #'setup-tide-mode))
 
-(when (maybe-require-package 'projectile)
-  (defun eslint-fix-current-file ()
-    (interactive)
-    (projectile-with-default-dir (projectile-acquire-root)
-      (save-excursion
-        (let ((command (concat "npx eslint --fix " (buffer-file-name))))
-          (message command)
-          (shell-command command))
-        (revert-buffer t t)))))
+
 
 
 
@@ -136,7 +141,17 @@
                               (lsp)))
 
 
+;; devdocs-browser
 (maybe-require-package 'devdocs-browser)
+
+
+
+;; restclient
+
+
+(when (and (maybe-require-package 'restclient) (maybe-require-package 'company-restclient))
+  (add-hook 'restclient-mode-hook (lambda ()
+                                    (set (make-local-variable 'company-backends) '(company-restclient company-dabbrev)))))
 
 (provide 'init-local)
 ;;; init-local.el ends here
