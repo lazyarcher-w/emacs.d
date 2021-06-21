@@ -46,6 +46,7 @@
 
   (setq org-default-notes-file (concat org-directory "/inbox.org.gpg"))
   (setq org-agenda-files (list org-default-notes-file
+                               (concat org-directory "/issues.org.gpg")
                                (concat org-directory "/journal.org.gpg")
                                (concat org-directory "/work.org.gpg")
                                (concat org-directory "/home.org.gpg")
@@ -131,7 +132,6 @@
                                             "-XX:+UseG1GC"
                                             "-XX:+UseStringDeduplication"
                                             ,(concat "-javaagent:" path-to-lombok))))))
-(add-hook 'yaml-mode-hook #'lsp)
 
 
 ;; python
@@ -152,6 +152,11 @@
 (when (and (maybe-require-package 'restclient) (maybe-require-package 'company-restclient))
   (add-hook 'restclient-mode-hook (lambda ()
                                     (set (make-local-variable 'company-backends) '(company-restclient company-dabbrev)))))
+
+
+;; separedit
+(require 'separedit)
+(define-key prog-mode-map        (kbd "C-c '") #'separedit)
 
 (provide 'init-local)
 ;;; init-local.el ends here
