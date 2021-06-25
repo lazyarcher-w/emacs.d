@@ -57,8 +57,7 @@
 
 
 ;; javascript
-
-;; lsp support
+(maybe-require-package 'dumb-jump)
 (when (maybe-require-package 'tide)
 
   (defun eslint-fix-current-file ()
@@ -132,7 +131,7 @@
                                             "-XX:+UseG1GC"
                                             "-XX:+UseStringDeduplication"
                                             ,(concat "-javaagent:" path-to-lombok))))))
-
+(advice-add 'lsp :before (lambda (&rest _args) (eval '(setf (lsp-session-server-id->folders (lsp-session)) (ht)))))
 
 ;; python
 (require-package 'lsp-pyright)
@@ -155,8 +154,16 @@
 
 
 ;; separedit
-(require 'separedit)
+(require-package 'separedit)
 (define-key prog-mode-map        (kbd "C-c '") #'separedit)
+
+
+;; yasnippet
+(require-package 'yasnippet)
+(require-package 'yasnippet-snippets)
+(yas-global-mode 1)
+(yas-reload-all)
+(add-hook 'prog-mode-hook #'yas-minor-mode)
 
 (provide 'init-local)
 ;;; init-local.el ends here
