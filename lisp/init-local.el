@@ -56,8 +56,18 @@
                                (concat org-directory "/health.org.gpg"))))
 
 
+;; citre
+(require-package 'citre)
+(require 'citre-config)
+;; Bind your frequently used commands.
+(global-set-key (kbd "C-x c j") 'citre-jump)
+(global-set-key (kbd "C-x c J") 'citre-jump-back)
+(global-set-key (kbd "C-x c p") 'citre-ace-peek)
+(setq citre-project-root-function #'projectile-project-root)
+
+
 ;; javascript
-(maybe-require-package 'dumb-jump)
+
 (when (maybe-require-package 'tide)
 
   (defun eslint-fix-current-file ()
@@ -85,9 +95,6 @@
     (define-key tide-mode-map (kbd "C-.") #'tide-jump-to-implementation)
     (define-key tide-mode-map (kbd "C-,") #'tide-references)
     (define-key tide-mode-map (kbd "C-c C-f") #'eslint-fix-current-file)
-    (when (maybe-require-package 'dumb-jump)
-      (setq dumb-jump-selector 'completing-read)
-      (setq tide-jump-to-fallback  #'dumb-jump-go))
     (company-mode +1))
   ;; formats the buffer before saving
   ;; (add-hook 'before-save-hook 'tide-format-before-save)
@@ -107,6 +114,8 @@
   (setq lsp-headerline-breadcrumb-enable nil)
   (setq lsp-ui-sideline-enable t)
   (setq lsp-diagnostics-provider :none)
+  (setq lsp-enable-completion-at-point t)
+  (setq lsp-enable-snippet t)
   (setq lsp-modeline-code-actions-enable nil)
   (setq lsp-modeline-diagnostics-enable nil)
   (setq lsp-file-watch-threshold 2000))
@@ -162,7 +171,6 @@
 (require-package 'yasnippet)
 (require-package 'yasnippet-snippets)
 (yas-global-mode 1)
-(yas-reload-all)
 (add-hook 'prog-mode-hook #'yas-minor-mode)
 
 (provide 'init-local)
