@@ -38,22 +38,10 @@
                '("d" "diary" entry (file+datetree (lambda () (concat org-directory "/diary.org.gpg")))
                  "* %?\nEntered on %U\n  %i"))
 
-  (add-to-list 'org-capture-templates
-               '("j" "journal" entry (file+datetree (lambda () (concat org-directory "/journal.org.gpg")))
-                 "* %?\nEntered on %U\n  %i"))
-
-
-
   (setq org-default-notes-file (concat org-directory "/inbox.org.gpg"))
   (setq org-agenda-files (list org-default-notes-file
-                               (concat org-directory "/issues.org.gpg")
-                               (concat org-directory "/journal.org.gpg")
-                               (concat org-directory "/work.org.gpg")
-                               (concat org-directory "/home.org.gpg")
-                               (concat org-directory "/friend.org.gpg")
-                               (concat org-directory "/note.org")
-                               (concat org-directory "/study.org.gpg")
-                               (concat org-directory "/health.org.gpg"))))
+                               (concat org-directory "/gtd.org.gpg")
+                               )))
 
 
 ;; citre
