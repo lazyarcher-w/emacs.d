@@ -3,6 +3,11 @@
 ;;; Code:
 
 
+;; Don't downcase the returned candidates.
+(when (maybe-require-package 'company)
+  (setq company-dabbrev-downcase nil))
+
+
 ;; selectrum
 (when (maybe-require-package 'consult)
   ;; The Consult package provides the command consult-line which behaves similarly to Swiper.
@@ -51,7 +56,15 @@
 (global-set-key (kbd "C-x c j") 'citre-jump)
 (global-set-key (kbd "C-x c J") 'citre-jump-back)
 (global-set-key (kbd "C-x c p") 'citre-ace-peek)
-(setq citre-project-root-function #'projectile-project-root)
+(global-set-key (kbd "C-x c u") 'citre-update-this-tags-file)
+(setq
+ ;; Set this if you use project management plugin like projectile.  It's
+ ;; used for things like displaying paths relatively, see its docstring.
+ citre-project-root-function #'projectile-project-root
+ ;; Set this if you want to always use one location to create a tags file.
+ citre-default-create-tags-file-location 'global-cache
+ ;; See the "Create tags file" section above to know these options
+ citre-use-project-root-when-creating-tags t)
 
 
 ;; javascript
